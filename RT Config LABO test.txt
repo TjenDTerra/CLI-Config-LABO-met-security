@@ -1,0 +1,36 @@
+en
+conf t
+host R1
+enable secret $cisco!PRIV*
+security pass min-length 12
+no ip domain-lookup
+no ip http server
+no ip https server
+ip domain-name vdab.school
+user SSHadmin password 55HAdm!n2020
+crypto key generate rsa
+1024
+banner motd "Vroem vroem vroem, tanken en nog is vroem"
+login block-for 120 attempt 3 within 60
+ipv6 unicast-routing
+line con 0
+exec-timeout 5 
+password $cisco!!CON*
+login
+line vty 0 4
+transport input ssh
+exec-timeout 5
+login local
+password $cisco!!VTY*
+login
+int g 0/0/0
+ip add 192.168.1.1 255.255.255.0
+ipv6 add 2001:acad:cafe:A::1/64
+ipv6 add fe80::1 link-local
+desc Tuutuut
+no shut
+int range g 0/0/1 
+shutdown
+service pass 
+exit
+copy run star

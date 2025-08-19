@@ -1,0 +1,37 @@
+en
+conf t
+host S1
+enable secret $cisco!PRIV*
+#security pass min-length 12
+no ip domain-lookup
+no ip http server
+#no ip https server
+ip domain-name vdab.school
+ip default-gateway 192.168.1.1
+user SSHadmin password 55HAdm!n2020
+crypto key generate rsa
+1024
+banner motd "50 per uur is niet 70 per uur op de muur toettoet"
+login block-for 120 attempt 3 within 60
+line con 0
+exec-timeout 5 
+password $cisco!!CON*
+login
+line vty 0 4
+transport input ssh
+exec-timeout 5 
+login local
+password $cisco!!VTY*
+login
+int Vlan 1
+ip add 192.168.1.11 255.255.255.0
+desc EEeeeoooowwwwwww
+no shut
+int range F0/2-23
+shutdown
+service password-encryption
+exit
+copy run star
+
+
+# -> werkt niet op de sw of op sommige sws
