@@ -9,6 +9,7 @@ no ip http server
 ip domain-name vdab.school
 ip default-gateway 192.168.1.1
 user SSHadmin password 55HAdm!n2020
+sdm prefer dual-ipv4-and-ipv6 default
 crypto key generate rsa
 1024
 banner motd "50 per uur is niet 70 per uur op de muur toettoet"
@@ -32,6 +33,8 @@ shutdown
 service password-encryption
 exit
 copy run star
-
+reload
 
 # -> werkt niet op de sw of op sommige sws
+> sdm prefer dual-ipv4-and-ipv6 default > voor uipv6 dual stack te enebablen + reload op teinde
+want dat moet 
